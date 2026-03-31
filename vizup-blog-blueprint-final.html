@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The SEO Blog Blueprint — VizUp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #F7F6F2;
+  --surface:   #FFFFFF;
+  --dark:      #0D0F1A;
+  --dark-card: #14172A;
+  --accent:    #5955E3;
+  --accent-lt: #EEF0FF;
+  --green:     #16A34A;
+  --green-lt:  #DCFCE7;
+  --amber:     #D97706;
+  --amber-lt:  #FEF3C7;
+  --border:    #E2E0DA;
+  --border-d:  #B8B5AB;
+  --text:      #1A1A1A;
+  --text-2:    #4A4842;
+  --text-3:    #8A8780;
+  --wf-bg:     #EEEDE8;
+  --wf-bar:    #D4D0C8;
+  --wf-border: #C8C4BC;
+  --r:         8px;
+  --r-lg:      14px;
+  --r-xl:      20px;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero {
+  background: var(--dark);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(89,85,227,0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(89,85,227,0.15);
+  border: 1px solid rgba(89,85,227,0.35);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #A5A2FF;
+  margin-bottom: 24px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1; color: #fff;
+  max-width: 700px; margin: 0 auto 18px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: italic; color: #A5A2FF;
+}
+.hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.55);
+  max-width: 520px; margin: 0 auto 40px;
+  line-height: 1.65;
+}
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin-bottom: 44px;
+}
+.hero-pill {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px; padding: 6px 14px;
+  font-size: 12px; color: rgba(255,255,255,0.65);
+}
+.hero-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+.hero-divider {
+  max-width: 1160px; margin: 0 auto;
+  border: none; border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 0;
+}
+
+/* ─── INTRO STRIP ─────────────────────────────────────── */
+.intro-strip {
+  background: var(--accent);
+  padding: 18px 24px;
+}
+.intro-strip-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.intro-strip p {
+  font-size: 14px; font-weight: 500; color: white;
+  opacity: 0.9;
+}
+.intro-strip strong { opacity: 1; font-weight: 700; }
+
+/* ─── MAIN CONTENT ────────────────────────────────────── */
+.main { max-width: 1160px; margin: 0 auto; padding: 60px 24px 80px; }
+
+.section-header {
+  text-align: center; margin-bottom: 52px;
+}
+.section-header h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px; letter-spacing: -0.02em;
+  color: var(--text); margin-bottom: 10px;
+}
+.section-header p { font-size: 15px; color: var(--text-2); max-width: 520px; margin: 0 auto; }
+
+/* ─── COMPONENT CARD ──────────────────────────────────── */
+.comp-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xl);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.comp-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+
+.comp-header {
+  padding: 24px 28px 20px;
+  display: flex; align-items: flex-start; gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.comp-num {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--dark); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7);
+  font-variant-numeric: tabular-nums;
+}
+.comp-meta { flex: 1; min-width: 0; }
+.comp-title { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 5px; letter-spacing: -0.01em; }
+.comp-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+.comp-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; border-radius: 100px;
+  padding: 3px 9px;
+}
+.tag-seo { background: var(--green-lt); color: var(--green); }
+.tag-conv { background: var(--accent-lt); color: var(--accent); }
+.tag-trust { background: var(--amber-lt); color: var(--amber); }
+
+.comp-body {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.comp-wireframe {
+  padding: 24px 28px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+}
+.comp-wireframe-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.comp-wireframe-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--border-d); border-radius: 50%;
+}
+.comp-details {
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.detail-block-title {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 8px;
+}
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.checklist li {
+  font-size: 13px; color: var(--text-2); display: flex; align-items: flex-start; gap: 8px;
+}
+.checklist li::before {
+  content: '';
+  display: inline-block; flex-shrink: 0;
+  width: 16px; height: 16px; margin-top: 1px;
+  background: var(--green-lt); border-radius: 4px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%2316A34A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center; background-size: 10px;
+}
+.impact-box {
+  background: var(--accent-lt);
+  border: 1px solid rgba(89,85,227,0.2);
+  border-radius: var(--r);
+  padding: 12px 14px;
+}
+.impact-box-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 4px;
+}
+.impact-box p { font-size: 12px; color: #3B38A0; line-height: 1.5; }
+
+/* ─── WIREFRAME PRIMITIVES ────────────────────────────── */
+.wf { background: var(--surface); border: 1.5px dashed var(--wf-border); border-radius: 10px; padding: 12px 14px; }
+.wf-bar { background: var(--wf-bar); border-radius: 3px; height: 8px; }
+.wf-bar-dark { background: #B0ACAA; border-radius: 3px; height: 8px; }
+.wf-img { background: var(--wf-bg); border: 1px solid var(--wf-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.wf-img-label { font-size: 9px; color: var(--text-3); letter-spacing: 0.04em; }
+.wf-lbl {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-3); background: var(--wf-bg);
+  border: 1px solid var(--wf-border); border-radius: 100px;
+  padding: 2px 7px; display: inline-block;
+}
+.wf-btn-d { background: var(--text); color: white; border-radius: 100px; padding: 4px 12px; font-size: 9px; display: inline-block; }
+.wf-btn-o { background: transparent; border: 1px solid var(--border-d); border-radius: 100px; padding: 4px 12px; font-size: 9px; color: var(--text-2); display: inline-block; }
+.wf-link { color: #4A7CC0; font-size: 10px; text-decoration: underline; }
+.wf-avatar { background: var(--wf-bg); border: 1px solid var(--wf-border); border-radius: 50%; flex-shrink: 0; }
+.wf-badge { background: var(--wf-bg); border: 1px solid var(--wf-border); border-radius: 4px; padding: 2px 7px; font-size: 8px; color: var(--text-3); }
+
+/* NAV WF */
+.wf-nav-row { display: flex; align-items: center; justify-content: space-between; }
+.wf-nav-logo { font-size: 12px; font-weight: 700; color: var(--text); }
+.wf-nav-links { display: flex; gap: 10px; }
+.wf-nav-links span { font-size: 9px; color: var(--text-3); }
+.wf-nav-btns { display: flex; gap: 6px; }
+
+/* BREADCRUMB WF */
+.wf-bc { display: flex; align-items: center; gap: 5px; }
+.wf-bc-sep { color: var(--text-3); font-size: 9px; }
+.wf-socials { display: flex; gap: 5px; }
+.wf-social-icon { width: 20px; height: 20px; background: var(--wf-bg); border: 1px solid var(--wf-border); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.wf-social-icon svg { width: 9px; height: 9px; fill: var(--text-3); }
+
+/* AUTHOR WF */
+.wf-author-row { display: flex; align-items: center; justify-content: space-between; }
+.wf-author-card { display: flex; align-items: center; gap: 8px; }
+.wf-badges-row { display: flex; gap: 4px; }
+
+/* HEADING WF */
+.wf-h1 { background: var(--wf-bar); border-radius: 3px; }
+.wf-meta-pills { display: flex; gap: 5px; }
+.wf-meta-pill { background: var(--wf-bg); border: 1px solid var(--wf-border); border-radius: 100px; padding: 2px 8px; font-size: 8px; color: var(--text-3); }
+
+/* CONTENT WF */
+.wf-3col { display: grid; grid-template-columns: 60px 1fr 70px; gap: 10px; align-items: start; }
+.wf-toc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.wf-toc-item { display: flex; align-items: center; gap: 4px; }
+.wf-toc-num { font-size: 8px; color: var(--text-3); }
+.wf-article-lines { display: flex; flex-direction: column; gap: 5px; }
+.wf-callout { border-left: 2px solid var(--wf-border); background: var(--wf-bg); padding: 6px 8px; border-radius: 0 3px 3px 0; font-size: 8px; color: var(--text-3); margin: 6px 0; }
+.wf-sidebar-box { background: var(--surface); border: 1.5px dashed var(--wf-border); border-radius: 6px; padding: 8px; margin-bottom: 6px; }
+.wf-sidebar-lbl { font-size: 7px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
+
+/* CTA WF */
+.wf-cta-box { background: var(--wf-bg); border-radius: 8px; padding: 16px; text-align: center; }
+.wf-cta-btns { display: flex; gap: 6px; justify-content: center; margin-top: 10px; }
+
+/* AUTHOR BIO WF */
+.wf-bio-card { border: 1px solid var(--wf-border); border-radius: 6px; padding: 10px; display: flex; gap: 10px; }
+
+/* RELATED WF */
+.wf-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.wf-blog-card { border: 1px solid var(--wf-border); border-radius: 6px; overflow: hidden; }
+.wf-blog-thumb { background: var(--wf-bg); height: 44px; display: flex; align-items: center; justify-content: center; font-size: 8px; color: var(--text-3); }
+.wf-blog-body { padding: 6px 8px; display: flex; flex-direction: column; gap: 3px; }
+
+/* FOOTER WF */
+.wf-footer-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.wf-footer-col { display: flex; flex-direction: column; gap: 5px; }
+.wf-footer-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.wf-footer-link { font-size: 8px; color: var(--text-3); }
+
+/* ─── BOTTOM CTA ──────────────────────────────────────── */
+.bottom-cta {
+  background: var(--dark);
+  border-radius: var(--r-xl);
+  padding: 60px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+  max-width: 1112px; margin: 0 auto;
+}
+.bottom-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(89,85,227,0.3) 0%, transparent 65%);
+  pointer-events: none;
+}
+.bottom-cta-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #A5A2FF; margin-bottom: 16px;
+}
+.bottom-cta h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px; color: white; margin-bottom: 14px;
+  line-height: 1.2; letter-spacing: -0.02em;
+}
+.bottom-cta p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 32px; max-width: 440px; margin-left: auto; margin-right: auto; }
+.bottom-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: white;
+  padding: 12px 28px; border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white; padding: 12px 28px; border-radius: 100px;
+  font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: background 0.15s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.13); }
+
+/* ─── SITE FOOTER ─────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  max-width: 1160px; margin: 0 auto;
+}
+.footer-left { display: flex; align-items: center; gap: 10px; }
+.footer-logo-icon { width: 22px; height: 22px; background: var(--accent); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.footer-logo-icon svg { width: 12px; height: 12px; fill: white; }
+.footer-logo-text { font-size: 13px; font-weight: 700; color: var(--text); }
+.footer-right { font-size: 12px; color: var(--text-3); }
+
+/* ─── PROGRESS BAR ────────────────────────────────────── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--accent); width: 0%; z-index: 200;
+  transition: width 0.1s linear;
+}
+
+/* ─── TOC JUMP ────────────────────────────────────────── */
+.components-nav {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px 24px; margin-bottom: 40px;
+}
+.components-nav-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 12px;
+}
+.components-nav-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+}
+.comp-nav-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 10px; border-radius: var(--r);
+  background: var(--bg); border: 1px solid var(--border);
+  text-decoration: none; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.comp-nav-item:hover { background: var(--accent-lt); border-color: rgba(89,85,227,0.3); }
+.comp-nav-num { font-size: 10px; font-weight: 700; color: var(--text-3); }
+.comp-nav-label { font-size: 11px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ─── ARRANGEMENTS SECTION ───────────────────────────── */
+.arrangements-wrap {
+  background: var(--dark);
+  padding: 72px 0 80px;
+  overflow: hidden;
+}
+.arrangements-head {
+  max-width: 1160px; margin: 0 auto;
+  padding: 0 24px 40px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.arrangements-head-left {}
+.arr-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #A5A2FF; margin-bottom: 10px;
+}
+.arrangements-head h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 34px; color: #fff; line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 10px;
+}
+.arrangements-head p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 420px; line-height: 1.6; }
+.arr-scroll-hint {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}
+.arr-scroll-hint svg { width: 16px; height: 16px; opacity: 0.4; }
+
+/* Scroll track */
+.arr-scroll-track {
+  display: flex; gap: 16px;
+  padding: 0 24px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.arr-scroll-track:active { cursor: grabbing; }
+.arr-scroll-track::-webkit-scrollbar { height: 4px; }
+.arr-scroll-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 2px; }
+.arr-scroll-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+/* Individual arrangement card */
+.arr-card {
+  flex: 0 0 320px;
+  background: #1A1D2E;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: border-color 0.2s, transform 0.2s;
+  user-select: none;
+}
+.arr-card:hover {
+  border-color: rgba(89,85,227,0.4);
+  transform: translateY(-2px);
+}
+.arr-card.recommended {
+  border-color: rgba(89,85,227,0.5);
+}
+
+/* Card top bar */
+.arr-card-top {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.arr-card-badges { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.arr-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  border-radius: 100px; padding: 3px 8px;
+}
+.arr-badge-rec { background: rgba(89,85,227,0.25); color: #A5A2FF; border: 1px solid rgba(89,85,227,0.35); }
+.arr-badge-seo { background: rgba(22,163,74,0.2); color: #4ADE80; border: 1px solid rgba(22,163,74,0.3); }
+.arr-badge-conv { background: rgba(217,119,6,0.2); color: #FCD34D; border: 1px solid rgba(217,119,6,0.3); }
+.arr-badge-min { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
+.arr-card-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; letter-spacing: -0.01em; }
+.arr-card-desc { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.5; }
+
+/* Mini page preview */
+.arr-preview {
+  padding: 14px 20px;
+  display: flex; gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* The tiny page column */
+.mini-page {
+  flex: 0 0 100px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.mp-block {
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6.5px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; white-space: nowrap;
+  overflow: hidden; flex-shrink: 0;
+  border: 1px solid transparent;
+  transition: opacity 0.15s;
+}
+.mp-block.present { opacity: 1; }
+.mp-block.absent { opacity: 0.18; background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.06) !important; color: rgba(255,255,255,0.2) !important; }
+
+/* block colors */
+.mp-nav    { background: #2A2D40; border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); height: 14px; }
+.mp-bc     { background: #22253A; border-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.35); height: 10px; }
+.mp-author { background: #252840; border-color: rgba(89,85,227,0.2); color: #A5A2FF; height: 12px; }
+.mp-h1     { background: #1E2136; border-color: rgba(89,85,227,0.15); color: #C5C3FF; height: 20px; }
+.mp-img    { background: #2A2E42; border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); height: 28px; }
+.mp-body   { background: #1C1F32; border-color: rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); height: 64px; }
+.mp-cta-mid{ background: rgba(89,85,227,0.2); border-color: rgba(89,85,227,0.35); color: #A5A2FF; height: 18px; }
+.mp-cta    { background: rgba(89,85,227,0.35); border-color: rgba(89,85,227,0.5); color: #C5C3FF; height: 22px; }
+.mp-bio    { background: #21243A; border-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.3); height: 16px; }
+.mp-rel    { background: #1E2136; border-color: rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); height: 22px; }
+.mp-footer { background: #161928; border-color: rgba(255,255,255,0.05); color: rgba(255,255,255,0.2); height: 12px; }
+
+/* Component list on the right */
+.arr-comp-list {
+  flex: 1; display: flex; flex-direction: column; gap: 4px;
+  padding-top: 2px;
+}
+.arr-comp-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; color: rgba(255,255,255,0.55);
+  padding: 3px 0;
+}
+.arr-comp-item.on { color: rgba(255,255,255,0.7); }
+.arr-comp-item.off { color: rgba(255,255,255,0.2); text-decoration: line-through; }
+.arr-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.arr-dot.on  { background: #4ADE80; }
+.arr-dot.off { background: rgba(255,255,255,0.1); }
+
+/* Stats row */
+.arr-stats {
+  padding: 12px 20px;
+  display: flex; gap: 16px;
+}
+.arr-stat { flex: 1; }
+.arr-stat-val { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+.arr-stat-lbl { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1px; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 860px) {
+  .comp-body { grid-template-columns: 1fr; }
+  .comp-wireframe { border-right: none; border-bottom: 1px solid var(--border); }
+  .components-nav-grid { grid-template-columns: repeat(2, 1fr); }
+  .wf-3col { grid-template-columns: 1fr; }
+  .wf-cards { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+  .bottom-cta h2 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Free Resource by Vizup
+  </div>
+  <h1>The SEO Blog <em>Blueprint</em></h1>
+  <p class="hero-sub">10 must-have components every blog post needs to rank higher, convert better, and actually drive revenue — with wireframes for each.</p>
+  <div class="hero-pills">
+    <div class="hero-pill">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2L14 6.9L11 9.8L11.7 14L8 11.8L4.3 14L5 9.8L2 6.9L6.2 6.2L8 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      10 components
+    </div>
+    <div class="hero-pill">
+      <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Visual wireframes
+    </div>
+    <div class="hero-pill">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M2 8l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      SEO + conversion rationale
+    </div>
+    <div class="hero-pill">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      5 min read
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INTRO STRIP ═══════════ -->
+<div class="intro-strip">
+  <div class="intro-strip-inner">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L10.8 6.5L15.5 7L11.8 10.5L12.9 15.2L9 12.8L5.1 15.2L6.2 10.5L2.5 7L7.2 6.5L9 2Z" fill="white" opacity="0.9"/></svg>
+    <p><strong>Built from real-world SEO work.</strong> We've audited hundreds of brand blogs. These are the components that consistently separate blogs that convert from blogs that just sit there.</p>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main class="main">
+
+  <div class="section-header">
+    <h2>The 10 Components</h2>
+    <p>Each component has a purpose. Miss one and you're either leaking trust, losing rankings, or leaving conversions on the table.</p>
+  </div>
+
+  <!-- COMPONENT NAV -->
+  <div class="components-nav">
+    <div class="components-nav-title">Jump to component</div>
+    <div class="components-nav-grid">
+      <a class="comp-nav-item" href="#c1"><span class="comp-nav-num">01</span><span class="comp-nav-label">Top Nav</span></a>
+      <a class="comp-nav-item" href="#c2"><span class="comp-nav-num">02</span><span class="comp-nav-label">Breadcrumb</span></a>
+      <a class="comp-nav-item" href="#c3"><span class="comp-nav-num">03</span><span class="comp-nav-label">Author + Trust</span></a>
+      <a class="comp-nav-item" href="#c4"><span class="comp-nav-num">04</span><span class="comp-nav-label">Heading + Meta</span></a>
+      <a class="comp-nav-item" href="#c5"><span class="comp-nav-num">05</span><span class="comp-nav-label">Featured Image</span></a>
+      <a class="comp-nav-item" href="#c6"><span class="comp-nav-num">06</span><span class="comp-nav-label">Body + Sidebar</span></a>
+      <a class="comp-nav-item" href="#c7"><span class="comp-nav-num">07</span><span class="comp-nav-label">Full CTA</span></a>
+      <a class="comp-nav-item" href="#c8"><span class="comp-nav-num">08</span><span class="comp-nav-label">Author Bio</span></a>
+      <a class="comp-nav-item" href="#c9"><span class="comp-nav-num">09</span><span class="comp-nav-label">Related Blogs</span></a>
+      <a class="comp-nav-item" href="#c10"><span class="comp-nav-num">10</span><span class="comp-nav-label">Footer</span></a>
+    </div>
+  </div>
+
+  <!-- ─── C1: TOP NAV ─── -->
+  <div class="comp-card" id="c1">
+    <div class="comp-header">
+      <div class="comp-num">01</div>
+      <div class="comp-meta">
+        <div class="comp-title">Top Navigation</div>
+        <div class="comp-desc">The nav appears on every page — it's free real estate for brand recall, internal linking, and conversion. Most blogs let this slot go to waste with a generic site nav.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">SEO</span>
+        <span class="tag tag-conv">Conversion</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Top Nav</div>
+        <div class="wf">
+          <div class="wf-nav-row">
+            <div class="wf-nav-logo">● Logo</div>
+            <div class="wf-nav-links">
+              <span style="font-size:9px;color:var(--text-3);">Product ▾</span>
+              <span style="font-size:9px;color:var(--text-3);">Use Cases ▾</span>
+              <span style="font-size:9px;color:var(--text-3);">Pricing</span>
+              <span style="font-size:9px;color:var(--text-3);">Blog</span>
+              <span style="font-size:9px;color:var(--text-3);">Login</span>
+            </div>
+            <div class="wf-nav-btns">
+              <div class="wf-btn-o">Demo</div>
+              <div class="wf-btn-d">Get Started →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Logo linking to homepage (brand anchor text signal)</li>
+            <li>Key product pages in dropdown menus</li>
+            <li>Visible "Blog" link for crawlability</li>
+            <li>Primary CTA button (Get Started / Book Demo)</li>
+            <li>Secondary CTA (Login / Watch Demo)</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>Sitewide nav links pass PageRank to your most important pages. A clear CTA converts readers who arrive organically — don't let them bounce without a next step.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C2: BREADCRUMB ─── -->
+  <div class="comp-card" id="c2">
+    <div class="comp-header">
+      <div class="comp-num">02</div>
+      <div class="comp-meta">
+        <div class="comp-title">Breadcrumb + Social Share</div>
+        <div class="comp-desc">Breadcrumbs tell Google exactly where this article sits in your site architecture. Social share buttons reduce friction for readers who want to amplify your content.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">SEO</span>
+        <span class="tag tag-trust">Distribution</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Breadcrumb + Share</div>
+        <div class="wf">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+            <div class="wf-bc">
+              <span class="wf-link">Home</span>
+              <span class="wf-bc-sep">/</span>
+              <span class="wf-link">Blog</span>
+              <span class="wf-bc-sep">/</span>
+              <span class="wf-link">Category</span>
+              <span class="wf-bc-sep">/</span>
+              <span style="font-size:10px;color:var(--text-2);">Article title…</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px;">
+              <span style="font-size:9px;color:var(--text-3);">Share:</span>
+              <div class="wf-socials">
+                <div class="wf-social-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+                <div class="wf-social-icon"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.921l4.26 5.628zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                <div class="wf-social-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Home → Category → Subcategory → Article trail</li>
+            <li>BreadcrumbList structured data (JSON-LD)</li>
+            <li>LinkedIn, X, and email share buttons</li>
+            <li>Optional: "Copy link" icon for quick sharing</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>Breadcrumbs enable sitelinks in SERPs, reinforce your internal linking structure, and help Google understand topic clusters. Structured data = richer search appearance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C3: AUTHOR + TRUST ─── -->
+  <div class="comp-card" id="c3">
+    <div class="comp-header">
+      <div class="comp-num">03</div>
+      <div class="comp-meta">
+        <div class="comp-title">Author + Trust Markers</div>
+        <div class="comp-desc">Google's E-E-A-T framework rewards content from demonstrably expert authors. Visible credentials, publication date, and review badges signal both to search engines and to human readers that your content is trustworthy.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-trust">E-E-A-T</span>
+        <span class="tag tag-seo">SEO</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Author + Trust</div>
+        <div class="wf">
+          <div class="wf-author-row">
+            <div class="wf-author-card">
+              <div class="wf-avatar" style="width:36px;height:36px;"></div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--text);">Author Name</div>
+                <div style="font-size:9px;color:var(--text-3);">Role · 5+ yrs experience</div>
+              </div>
+            </div>
+            <div class="wf-badges-row">
+              <div class="wf-badge">Expert Review</div>
+              <div class="wf-badge">Updated 2025</div>
+              <div class="wf-badge">X min read</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Author avatar, name, and job title</li>
+            <li>Years of experience or relevant credential</li>
+            <li>"Reviewed by [Expert]" badge if applicable</li>
+            <li>Last updated date (freshness signal to Google)</li>
+            <li>Estimated read time</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>YMYL and competitive topics get extra E-E-A-T scrutiny. Author markup in Person schema lets Google associate expertise with your domain. Credibility seen above the fold reduces bounce rate immediately.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C4: HEADING + META ─── -->
+  <div class="comp-card" id="c4">
+    <div class="comp-header">
+      <div class="comp-num">04</div>
+      <div class="comp-meta">
+        <div class="comp-title">Article Heading + Publish Meta</div>
+        <div class="comp-desc">The H1 is the single highest-impact on-page SEO element. It sets the expectation for the entire article. Category tags help readers self-select and strengthen topical clusters.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">H1 / SEO</span>
+        <span class="tag tag-conv">First impression</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Heading + Meta</div>
+        <div class="wf">
+          <div style="margin-bottom:10px;">
+            <div class="wf-lbl" style="margin-bottom:8px;">Category tag</div>
+            <div class="wf-h1" style="width:90%;height:18px;margin-bottom:6px;"></div>
+            <div class="wf-h1" style="width:68%;height:18px;margin-bottom:4px;"></div>
+            <div style="font-size:8px;color:var(--text-3);">H1 — Article headline</div>
+          </div>
+          <div class="wf-meta-pills">
+            <div class="wf-meta-pill">15 Mar 2025</div>
+            <div class="wf-meta-pill">8 min read</div>
+            <div class="wf-meta-pill">By Author</div>
+            <div class="wf-meta-pill">3 comments</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>H1 with primary keyword (natural placement, not stuffed)</li>
+            <li>Topic category tag linking to category archive</li>
+            <li>Original publish date + last updated date</li>
+            <li>Estimated reading time</li>
+            <li>Author name (clickable to author page)</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>One H1 per page is non-negotiable. Category tags build crawl paths and topic cluster architecture. Publish date + "Updated" signals freshness to Google and reduces user bounce driven by content staleness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C5: FEATURED IMAGE ─── -->
+  <div class="comp-card" id="c5">
+    <div class="comp-header">
+      <div class="comp-num">05</div>
+      <div class="comp-meta">
+        <div class="comp-title">Featured Image</div>
+        <div class="comp-desc">The featured image is your Open Graph image, your thumbnail in search results, and the visual hook that keeps readers engaged. It also directly impacts Core Web Vitals if not optimised.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">Core Web Vitals</span>
+        <span class="tag tag-trust">Brand recall</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Featured Image</div>
+        <div class="wf">
+          <div class="wf-img" style="height:110px;position:relative;">
+            <div style="text-align:center;">
+              <div class="wf-img-label">Featured Image</div>
+              <div style="font-size:8px;color:var(--text-3);margin-top:3px;">16:9 ratio · 1200×630px minimum</div>
+              <div style="font-size:8px;color:var(--text-3);">Alt text: "[primary keyword] — [brand name]"</div>
+            </div>
+            <div style="position:absolute;bottom:6px;right:8px;font-size:7px;background:rgba(0,0,0,0.15);padding:2px 6px;border-radius:3px;color:var(--text-2);">OG Image</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>1200×630px minimum (OG image compatible)</li>
+            <li>Descriptive alt text with primary keyword</li>
+            <li>WebP format + explicit width/height attributes</li>
+            <li>Brand logo or visual consistency across blog</li>
+            <li>loading="eager" on featured image (above the fold)</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>LCP (Largest Contentful Paint) is often triggered by the featured image. Unoptimised images drag down your Core Web Vitals score. Alt text is a direct ranking signal and accessibility requirement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C6: ARTICLE BODY + SIDEBAR ─── -->
+  <div class="comp-card" id="c6">
+    <div class="comp-header">
+      <div class="comp-num">06</div>
+      <div class="comp-meta">
+        <div class="comp-title">Article Body + TOC + Sticky Sidebar</div>
+        <div class="comp-desc">The three-column content layout — TOC left, article center, sidebar right — is the most conversion-effective structure for long-form blog content. Each column serves a distinct strategic purpose.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">SEO</span>
+        <span class="tag tag-conv">Conversion</span>
+        <span class="tag tag-trust">Dwell time</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Body + Sidebar (3-col)</div>
+        <div class="wf">
+          <div class="wf-3col">
+            <!-- TOC -->
+            <div>
+              <div style="font-size:8px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px;">Contents</div>
+              <ul class="wf-toc-list">
+                <li class="wf-toc-item"><span class="wf-toc-num">1.</span><span class="wf-link" style="font-size:9px;">Section title</span></li>
+                <li class="wf-toc-item"><span class="wf-toc-num">2.</span><span class="wf-link" style="font-size:9px;">Section title</span></li>
+                <li class="wf-toc-item"><span class="wf-toc-num">3.</span><span class="wf-link" style="font-size:9px;">Section title</span></li>
+                <li class="wf-toc-item"><span class="wf-toc-num">4.</span><span class="wf-link" style="font-size:9px;">FAQs</span></li>
+              </ul>
+            </div>
+            <!-- Article -->
+            <div class="wf-article-lines">
+              <div style="font-size:10px;font-weight:600;color:var(--text);margin-bottom:2px;">H2 heading</div>
+              <div class="wf-bar" style="width:100%;"></div>
+              <div class="wf-bar" style="width:96%;"></div>
+              <div class="wf-bar" style="width:88%;"></div>
+              <div class="wf-callout">Callout / stat / key quote</div>
+              <div class="wf-bar" style="width:100%;"></div>
+              <div class="wf-bar" style="width:82%;"></div>
+              <div class="wf-img" style="height:40px;margin:4px 0;"><div class="wf-img-label">Inline image / table</div></div>
+              <div style="font-size:10px;font-weight:600;color:var(--text);margin:4px 0 2px;">H2 heading</div>
+              <div class="wf-bar" style="width:100%;"></div>
+              <div class="wf-bar" style="width:91%;"></div>
+            </div>
+            <!-- Sidebar -->
+            <div>
+              <div class="wf-sidebar-box">
+                <div class="wf-sidebar-lbl">Related posts</div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span class="wf-link" style="font-size:9px;">Post title here…</span>
+                  <span class="wf-link" style="font-size:9px;">Post title here…</span>
+                  <span class="wf-link" style="font-size:9px;">Post title here…</span>
+                </div>
+              </div>
+              <div class="wf-sidebar-box">
+                <div class="wf-sidebar-lbl">Sticky mini CTA</div>
+                <div style="background:var(--wf-bg);border-radius:4px;padding:8px;text-align:center;">
+                  <div class="wf-bar" style="width:85%;margin:0 auto 4px;"></div>
+                  <div class="wf-bar" style="width:65%;margin:0 auto 6px;"></div>
+                  <div class="wf-btn-d" style="font-size:8px;">CTA →</div>
+                </div>
+                <div style="font-size:7px;color:var(--text-3);text-align:right;margin-top:3px;font-style:italic;">Sticks while scrolling</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Left TOC with anchor links (sticky on desktop)</li>
+            <li>H2/H3 heading hierarchy throughout article</li>
+            <li>Callout blocks for key stats/quotes</li>
+            <li>Inline images/tables with descriptive alt text</li>
+            <li>Sidebar: 3 related posts + sticky mini CTA</li>
+            <li>Internal links to pillar pages throughout body</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>TOC generates sitelinks in Google SERPs. A sticky sidebar CTA converts scroll-depth readers — the highest-intent visitors. Internal links distribute PageRank and build topic authority signals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C7: FULL CTA ─── -->
+  <div class="comp-card" id="c7">
+    <div class="comp-header">
+      <div class="comp-num">07</div>
+      <div class="comp-meta">
+        <div class="comp-title">Full-Width CTA Block</div>
+        <div class="comp-desc">A reader who reaches the end of an article has demonstrated high intent. This is the highest-value conversion slot on the entire page — yet most blogs don't have one at all.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-conv">Conversion</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Full-Width CTA</div>
+        <div class="wf">
+          <div class="wf-cta-box">
+            <div class="wf-bar" style="width:40%;height:14px;margin:0 auto 8px;"></div>
+            <div class="wf-bar" style="width:60%;margin:0 auto 4px;"></div>
+            <div class="wf-bar" style="width:50%;margin:0 auto 6px;"></div>
+            <div style="font-size:8px;color:var(--text-3);margin-bottom:8px;">Headline + supporting copy + social proof</div>
+            <div class="wf-cta-btns">
+              <div class="wf-btn-d">Primary CTA</div>
+              <div class="wf-btn-o">Secondary CTA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Headline tied to the article topic (not generic)</li>
+            <li>1-line value proposition or social proof</li>
+            <li>Primary CTA button (trial, demo, signup)</li>
+            <li>Secondary CTA (less commitment — "watch demo" or "read more")</li>
+            <li>Optional: number of customers or a recognisable logo strip</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>End-of-article readers have the lowest bounce intent on your site. A congruent CTA — matched to the article topic — converts at 2–4x the rate of a generic one. This is the most missed conversion slot in B2B content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C8: AUTHOR BIO ─── -->
+  <div class="comp-card" id="c8">
+    <div class="comp-header">
+      <div class="comp-num">08</div>
+      <div class="comp-meta">
+        <div class="comp-title">Author Bio Card</div>
+        <div class="comp-desc">The post-article author bio is a critical E-E-A-T signal. It establishes the human expert behind the content, links to their other work, and builds trust at the moment readers are deciding whether to act.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-trust">E-E-A-T</span>
+        <span class="tag tag-seo">Authority</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Author Bio Card</div>
+        <div class="wf">
+          <div class="wf-bio-card">
+            <div class="wf-avatar" style="width:52px;height:52px;"></div>
+            <div style="flex:1;">
+              <div style="font-size:8px;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;">Article by</div>
+              <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;">Author Name</div>
+              <div class="wf-bar" style="width:95%;margin-bottom:4px;"></div>
+              <div class="wf-bar" style="width:80%;margin-bottom:4px;"></div>
+              <div class="wf-bar" style="width:60%;margin-bottom:8px;"></div>
+              <div style="display:flex;gap:5px;">
+                <span class="wf-link" style="font-size:9px;">LinkedIn</span>
+                <span style="font-size:9px;color:var(--text-3);">·</span>
+                <span class="wf-link" style="font-size:9px;">More articles →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Author photo, name, and role</li>
+            <li>2–3 sentence bio with specific credentials</li>
+            <li>Link to author archive page (for SEO and topical authority)</li>
+            <li>LinkedIn or social profile link</li>
+            <li>Person schema markup on the author page</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>Google's Quality Rater Guidelines specifically call out "Who is responsible for this content?" A named, credentialed, linkable author is a direct E-E-A-T signal. Anonymous blogs lose ranking ground to attributed ones in competitive topics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C9: RELATED BLOGS ─── -->
+  <div class="comp-card" id="c9">
+    <div class="comp-header">
+      <div class="comp-num">09</div>
+      <div class="comp-meta">
+        <div class="comp-title">Related Blog Posts</div>
+        <div class="comp-desc">A related posts section extends session time, reduces bounce rate, and — most importantly for SEO — creates internal links that reinforce your topic cluster structure across every article.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">Internal linking</span>
+        <span class="tag tag-trust">Engagement</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Related Posts</div>
+        <div class="wf">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:600;color:var(--text);">More from our blog</div>
+            <div class="wf-btn-d" style="font-size:8px;">All articles →</div>
+          </div>
+          <div class="wf-cards">
+            <div class="wf-blog-card">
+              <div class="wf-blog-thumb">Thumbnail</div>
+              <div class="wf-blog-body">
+                <div class="wf-bar" style="width:90%;height:7px;"></div>
+                <div class="wf-bar" style="width:75%;height:7px;"></div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:5px;">
+                  <div class="wf-avatar" style="width:16px;height:16px;"></div>
+                  <span style="font-size:8px;color:var(--text-3);">Name · Role</span>
+                </div>
+              </div>
+            </div>
+            <div class="wf-blog-card">
+              <div class="wf-blog-thumb">Thumbnail</div>
+              <div class="wf-blog-body">
+                <div class="wf-bar" style="width:85%;height:7px;"></div>
+                <div class="wf-bar" style="width:70%;height:7px;"></div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:5px;">
+                  <div class="wf-avatar" style="width:16px;height:16px;"></div>
+                  <span style="font-size:8px;color:var(--text-3);">Name · Role</span>
+                </div>
+              </div>
+            </div>
+            <div class="wf-blog-card">
+              <div class="wf-blog-thumb">Thumbnail</div>
+              <div class="wf-blog-body">
+                <div class="wf-bar" style="width:88%;height:7px;"></div>
+                <div class="wf-bar" style="width:72%;height:7px;"></div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:5px;">
+                  <div class="wf-avatar" style="width:16px;height:16px;"></div>
+                  <span style="font-size:8px;color:var(--text-3);">Name · Role</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>3 topically related articles (same cluster, not random)</li>
+            <li>Article thumbnail, headline, and author for each card</li>
+            <li>"View all articles" link to the blog index</li>
+            <li>Keyword-rich anchor text in the card titles</li>
+            <li>Tag or category label on each card</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>Topically clustered internal links pass PageRank within your subject area and signal to Google that your site is authoritative on that topic. Random "popular posts" plugins kill this — related posts must match the article's topic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── C10: FOOTER ─── -->
+  <div class="comp-card" id="c10">
+    <div class="comp-header">
+      <div class="comp-num">10</div>
+      <div class="comp-meta">
+        <div class="comp-title">Footer</div>
+        <div class="comp-desc">The footer is sitewide and appears on every page. It's your last chance to send authority to your most important pages, surface trust signals, and meet legal requirements that Google checks.</div>
+      </div>
+      <div class="comp-tags">
+        <span class="tag tag-seo">SEO</span>
+        <span class="tag tag-trust">Trust</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="comp-wireframe">
+        <div class="comp-wireframe-label">Wireframe — Footer</div>
+        <div class="wf">
+          <div class="wf-footer-row" style="margin-bottom:12px;">
+            <div class="wf-footer-col">
+              <div style="font-size:12px;font-weight:600;color:var(--text);">Logo</div>
+              <div style="font-size:9px;color:var(--text-3);">© 2025 Brand Name Inc.</div>
+              <div style="display:flex;gap:5px;margin-top:4px;">
+                <div class="wf-social-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+                <div class="wf-social-icon"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.921l4.26 5.628zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+              </div>
+            </div>
+            <div>
+              <div class="wf-footer-links">
+                <span class="wf-footer-link">Product</span>
+                <span class="wf-footer-link">Pricing</span>
+                <span class="wf-footer-link">Blog</span>
+                <span class="wf-footer-link">Integrations</span>
+                <span class="wf-footer-link">About</span>
+              </div>
+              <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap;">
+                <div class="wf-badge" style="border-radius:50%;width:24px;height:24px;padding:0;display:flex;align-items:center;justify-content:center;">G</div>
+                <div class="wf-badge" style="border-radius:50%;width:24px;height:24px;padding:0;display:flex;align-items:center;justify-content:center;">★</div>
+                <div class="wf-badge">SOC2</div>
+                <div class="wf-badge">GDPR</div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--wf-border);padding-top:8px;display:flex;gap:12px;">
+            <span class="wf-footer-link">Privacy Policy</span>
+            <span class="wf-footer-link">Terms of Use</span>
+            <span class="wf-footer-link">Cookie Policy</span>
+            <span class="wf-footer-link">Sitemap</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-details">
+        <div>
+          <div class="detail-block-title">What to include</div>
+          <ul class="checklist">
+            <li>Logo + one-line company description</li>
+            <li>Links to key product/service pages</li>
+            <li>Privacy Policy, Terms, Cookie Policy (legal + crawlability)</li>
+            <li>Social profile links (brand entity signals)</li>
+            <li>Trust badges: G2/Capterra ratings, SOC2, GDPR</li>
+            <li>Sitemap link for crawler discovery</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-label">Why it matters</div>
+          <p>Footer links pass authority sitewide. Privacy/legal pages are crawled by Google to assess site legitimacy. Social profile links help Google resolve your brand entity in the Knowledge Graph. Missing these is a silent ranking penalty.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════ ARRANGEMENTS SECTION ═══════════ -->
+<section class="arrangements-wrap">
+
+  <div class="arrangements-head">
+    <div class="arrangements-head-left">
+      <div class="arr-eyebrow">Layout Patterns</div>
+      <h2>How to arrange<br>these components</h2>
+      <p>Not every blog needs all 10. Here are 5 proven arrangements — from the full SEO stack to a lean launch setup — and the tradeoffs each makes.</p>
+    </div>
+    <div class="arr-scroll-hint">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 5l4 3-4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Scroll to explore
+    </div>
+  </div>
+
+  <div class="arr-scroll-track" id="arrTrack">
+
+    <!-- ── CARD 1: Full SEO Stack ── -->
+    <div class="arr-card recommended">
+      <div class="arr-card-top">
+        <div class="arr-card-badges">
+          <span class="arr-badge arr-badge-rec">★ Recommended</span>
+          <span class="arr-badge arr-badge-seo">Full SEO</span>
+        </div>
+        <div class="arr-card-name">The Full Stack</div>
+        <div class="arr-card-desc">All 10 components. Maximum SEO signal, trust, and conversion coverage. Use for any article you want to rank.</div>
+      </div>
+      <div class="arr-preview">
+        <div class="mini-page">
+          <div class="mp-block mp-nav present">Nav</div>
+          <div class="mp-block mp-bc present">Breadcrumb</div>
+          <div class="mp-block mp-author present">Author + Trust</div>
+          <div class="mp-block mp-h1 present">H1 + Meta</div>
+          <div class="mp-block mp-img present">Featured Image</div>
+          <div class="mp-block mp-body present">Body + TOC + Sidebar</div>
+          <div class="mp-block mp-cta present">Full CTA</div>
+          <div class="mp-block mp-bio present">Author Bio</div>
+          <div class="mp-block mp-rel present">Related Posts</div>
+          <div class="mp-block mp-footer present">Footer</div>
+        </div>
+        <div class="arr-comp-list">
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Top Nav</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Breadcrumb + Share</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author + Trust</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>H1 + Publish Meta</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Featured Image</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Body + TOC + Sidebar</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Full-Width CTA</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author Bio Card</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Related Posts</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Footer</div>
+        </div>
+      </div>
+      <div class="arr-stats">
+        <div class="arr-stat"><div class="arr-stat-val">10/10</div><div class="arr-stat-lbl">Components</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">High</div><div class="arr-stat-lbl">SEO signal</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Max</div><div class="arr-stat-lbl">Conversion</div></div>
+      </div>
+    </div>
+
+    <!-- ── CARD 2: Authority First ── -->
+    <div class="arr-card">
+      <div class="arr-card-top">
+        <div class="arr-card-badges">
+          <span class="arr-badge arr-badge-seo">E-E-A-T</span>
+          <span class="arr-badge arr-badge-min">YMYL topics</span>
+        </div>
+        <div class="arr-card-name">The Authority Play</div>
+        <div class="arr-card-desc">Lead with credentials and trust before content. Best for health, finance, legal, and any topic where author expertise is a ranking factor.</div>
+      </div>
+      <div class="arr-preview">
+        <div class="mini-page">
+          <div class="mp-block mp-nav present">Nav</div>
+          <div class="mp-block mp-bc present">Breadcrumb</div>
+          <div class="mp-block mp-author present">Author + Trust</div>
+          <div class="mp-block mp-h1 present">H1 + Meta</div>
+          <div class="mp-block mp-img present">Featured Image</div>
+          <div class="mp-block mp-body present">Body + TOC + Sidebar</div>
+          <div class="mp-block mp-cta absent">Full CTA</div>
+          <div class="mp-block mp-bio present">Author Bio</div>
+          <div class="mp-block mp-rel present">Related Posts</div>
+          <div class="mp-block mp-footer present">Footer</div>
+        </div>
+        <div class="arr-comp-list">
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Top Nav</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Breadcrumb + Share</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author + Trust</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>H1 + Publish Meta</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Featured Image</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Body + TOC + Sidebar</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Full-Width CTA</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author Bio Card</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Related Posts</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Footer</div>
+        </div>
+      </div>
+      <div class="arr-stats">
+        <div class="arr-stat"><div class="arr-stat-val">9/10</div><div class="arr-stat-lbl">Components</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Max</div><div class="arr-stat-lbl">E-E-A-T</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Med</div><div class="arr-stat-lbl">Conversion</div></div>
+      </div>
+    </div>
+
+    <!-- ── CARD 3: Conversion-First ── -->
+    <div class="arr-card">
+      <div class="arr-card-top">
+        <div class="arr-card-badges">
+          <span class="arr-badge arr-badge-conv">Conversion</span>
+          <span class="arr-badge arr-badge-min">Bottom-funnel</span>
+        </div>
+        <div class="arr-card-name">The Conversion Machine</div>
+        <div class="arr-card-desc">Double up on CTAs — one mid-article for early intent, one full-width at the end. Best for bottom-funnel keywords where readers are ready to act.</div>
+      </div>
+      <div class="arr-preview">
+        <div class="mini-page">
+          <div class="mp-block mp-nav present">Nav</div>
+          <div class="mp-block mp-bc absent">Breadcrumb</div>
+          <div class="mp-block mp-author present">Author + Trust</div>
+          <div class="mp-block mp-h1 present">H1 + Meta</div>
+          <div class="mp-block mp-img present">Featured Image</div>
+          <div class="mp-block mp-body present" style="height:38px;">Body (pt 1)</div>
+          <div class="mp-block mp-cta-mid present">Mid-article CTA</div>
+          <div class="mp-block mp-body present" style="height:28px;">Body (pt 2)</div>
+          <div class="mp-block mp-cta present">Full-Width CTA</div>
+          <div class="mp-block mp-rel present">Related Posts</div>
+          <div class="mp-block mp-footer present">Footer</div>
+        </div>
+        <div class="arr-comp-list">
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Top Nav</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Breadcrumb + Share</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author + Trust</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>H1 + Publish Meta</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Featured Image</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Body (split)</div>
+          <div class="arr-comp-item on" style="color:#FCD34D;"><div class="arr-dot" style="background:#FCD34D;"></div>Mid-article CTA ✦ added</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Full-Width CTA</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Author Bio Card</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Related Posts</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Footer</div>
+        </div>
+      </div>
+      <div class="arr-stats">
+        <div class="arr-stat"><div class="arr-stat-val">9/10</div><div class="arr-stat-lbl">Components</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Med</div><div class="arr-stat-lbl">SEO signal</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Max</div><div class="arr-stat-lbl">Conversion</div></div>
+      </div>
+    </div>
+
+    <!-- ── CARD 4: Lean Launch ── -->
+    <div class="arr-card">
+      <div class="arr-card-top">
+        <div class="arr-card-badges">
+          <span class="arr-badge arr-badge-min">Minimal</span>
+          <span class="arr-badge arr-badge-min">Quick ship</span>
+        </div>
+        <div class="arr-card-name">The Lean Launch</div>
+        <div class="arr-card-desc">The minimum viable blog post. Ship fast without sacrificing the components that actually move rankings. Add the rest over time.</div>
+      </div>
+      <div class="arr-preview">
+        <div class="mini-page">
+          <div class="mp-block mp-nav present">Nav</div>
+          <div class="mp-block mp-bc absent">Breadcrumb</div>
+          <div class="mp-block mp-author present">Author + Trust</div>
+          <div class="mp-block mp-h1 present">H1 + Meta</div>
+          <div class="mp-block mp-img present">Featured Image</div>
+          <div class="mp-block mp-body present" style="height:72px;">Body (no sidebar)</div>
+          <div class="mp-block mp-cta present">Full-Width CTA</div>
+          <div class="mp-block mp-bio absent">Author Bio</div>
+          <div class="mp-block mp-rel absent">Related Posts</div>
+          <div class="mp-block mp-footer present">Footer</div>
+        </div>
+        <div class="arr-comp-list">
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Top Nav</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Breadcrumb + Share</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author + Trust</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>H1 + Publish Meta</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Featured Image</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Body (no sidebar/TOC)</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Full-Width CTA</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Author Bio Card</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Related Posts</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Footer</div>
+        </div>
+      </div>
+      <div class="arr-stats">
+        <div class="arr-stat"><div class="arr-stat-val">6/10</div><div class="arr-stat-lbl">Components</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Low</div><div class="arr-stat-lbl">SEO signal</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Med</div><div class="arr-stat-lbl">Conversion</div></div>
+      </div>
+    </div>
+
+    <!-- ── CARD 5: Thought Leadership ── -->
+    <div class="arr-card">
+      <div class="arr-card-top">
+        <div class="arr-card-badges">
+          <span class="arr-badge arr-badge-seo">Brand</span>
+          <span class="arr-badge arr-badge-min">Top-funnel</span>
+        </div>
+        <div class="arr-card-name">The Thought Leader</div>
+        <div class="arr-card-desc">Author-forward, no hard sell. Great for brand-building content, opinion pieces, and newsletters published as blog posts.</div>
+      </div>
+      <div class="arr-preview">
+        <div class="mini-page">
+          <div class="mp-block mp-nav present">Nav</div>
+          <div class="mp-block mp-bc present">Breadcrumb</div>
+          <div class="mp-block mp-author present">Author + Trust</div>
+          <div class="mp-block mp-h1 present">H1 + Meta</div>
+          <div class="mp-block mp-img absent">Featured Image</div>
+          <div class="mp-block mp-body present" style="height:80px;">Body (no sidebar)</div>
+          <div class="mp-block mp-cta absent">Full-Width CTA</div>
+          <div class="mp-block mp-bio present">Author Bio</div>
+          <div class="mp-block mp-rel present">Related Posts</div>
+          <div class="mp-block mp-footer present">Footer</div>
+        </div>
+        <div class="arr-comp-list">
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Top Nav</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Breadcrumb + Share</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author + Trust</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>H1 + Publish Meta</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Featured Image</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Body (no sidebar)</div>
+          <div class="arr-comp-item off"><div class="arr-dot off"></div>Full-Width CTA</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Author Bio Card</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Related Posts</div>
+          <div class="arr-comp-item on"><div class="arr-dot on"></div>Footer</div>
+        </div>
+      </div>
+      <div class="arr-stats">
+        <div class="arr-stat"><div class="arr-stat-val">8/10</div><div class="arr-stat-lbl">Components</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Med</div><div class="arr-stat-lbl">SEO signal</div></div>
+        <div class="arr-stat"><div class="arr-stat-val">Low</div><div class="arr-stat-lbl">Conversion</div></div>
+      </div>
+    </div>
+
+    <!-- spacer so last card doesn't kiss the edge -->
+    <div style="flex:0 0 8px;"></div>
+
+  </div><!-- /arr-scroll-track -->
+
+  <!-- Comparison table -->
+  <div style="max-width:1160px;margin:36px auto 0;padding:0 24px;">
+    <div style="background:#1A1D2E;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;">
+      <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Quick comparison</div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.07);">
+              <th style="padding:12px 20px;text-align:left;color:rgba(255,255,255,0.35);font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Component</th>
+              <th style="padding:12px 16px;text-align:center;color:#A5A2FF;font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Full Stack</th>
+              <th style="padding:12px 16px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Authority</th>
+              <th style="padding:12px 16px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Conversion</th>
+              <th style="padding:12px 16px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Lean</th>
+              <th style="padding:12px 16px;text-align:center;color:rgba(255,255,255,0.4);font-weight:600;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;">Thought Leader</th>
+            </tr>
+          </thead>
+          <tbody id="compTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ BOTTOM CTA ═══════════ -->
+<div style="padding:40px 24px;">
+  <div class="bottom-cta">
+    <div class="bottom-cta-label">Ready to fix your blog?</div>
+    <h2>Let Vizup audit your blog<br>structure automatically</h2>
+    <p>Vizup checks your live blog posts against this blueprint and tells you exactly what's missing — at scale, across every page.</p>
+    <div class="bottom-cta-btns">
+      <a class="btn-primary" href="https://tryvizup.com/book-a-demo">Book a Demo</a>
+      <a class="btn-ghost" href="https://tryvizup.com">Learn how it works</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SITE FOOTER ═══════════ -->
+<footer style="border-top:1px solid var(--border);padding:28px 24px;">
+  <div style="max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:22px;height:22px;background:var(--accent);border-radius:5px;display:flex;align-items:center;justify-content:center;">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 11L6.5 5.5L9.5 8.5L12 6L14 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span style="font-size:13px;font-weight:700;color:var(--text);">Vizup</span>
+      <span style="font-size:12px;color:var(--text-3);">· AI-Powered Organic Marketing Automation</span>
+    </div>
+    <div style="font-size:12px;color:var(--text-3);">
+      © 2025 Vizup · <a href="https://tryvizup.com" style="color:var(--accent);text-decoration:none;">tryvizup.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ── Comparison table ──────────────────────────────────
+const rows = [
+  { label: 'Top Nav',           full:1, auth:1, conv:1, lean:1, tl:1 },
+  { label: 'Breadcrumb + Share',full:1, auth:1, conv:0, lean:0, tl:1 },
+  { label: 'Author + Trust',    full:1, auth:1, conv:1, lean:1, tl:1 },
+  { label: 'H1 + Publish Meta', full:1, auth:1, conv:1, lean:1, tl:1 },
+  { label: 'Featured Image',    full:1, auth:1, conv:1, lean:1, tl:0 },
+  { label: 'Body + TOC + Sidebar',full:1,auth:1,conv:1, lean:0, tl:0 },
+  { label: 'Body (no sidebar)', full:0, auth:0, conv:0, lean:1, tl:1 },
+  { label: 'Mid-article CTA',   full:0, auth:0, conv:1, lean:0, tl:0 },
+  { label: 'Full-Width CTA',    full:1, auth:0, conv:1, lean:1, tl:0 },
+  { label: 'Author Bio Card',   full:1, auth:1, conv:0, lean:0, tl:1 },
+  { label: 'Related Posts',     full:1, auth:1, conv:1, lean:0, tl:1 },
+  { label: 'Footer',            full:1, auth:1, conv:1, lean:1, tl:1 },
+];
+
+const tick = `<span style="color:#4ADE80;font-size:13px;">✓</span>`;
+const dash = `<span style="color:rgba(255,255,255,0.13);font-size:13px;">—</span>`;
+
+const tbody = document.getElementById('compTable');
+rows.forEach((r, i) => {
+  const tr = document.createElement('tr');
+  tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+  if (i % 2 === 0) tr.style.background = 'rgba(255,255,255,0.015)';
+  tr.innerHTML = `
+    <td style="padding:10px 20px;color:rgba(255,255,255,0.6);white-space:nowrap;">${r.label}</td>
+    <td style="padding:10px 16px;text-align:center;">${r.full ? tick : dash}</td>
+    <td style="padding:10px 16px;text-align:center;">${r.auth ? tick : dash}</td>
+    <td style="padding:10px 16px;text-align:center;">${r.conv ? tick : dash}</td>
+    <td style="padding:10px 16px;text-align:center;">${r.lean ? tick : dash}</td>
+    <td style="padding:10px 16px;text-align:center;">${r.tl   ? tick : dash}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// ── Drag to scroll ────────────────────────────────────
+const track = document.getElementById('arrTrack');
+let isDragging = false, startX, scrollLeft;
+track.addEventListener('mousedown', e => {
+  isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+  track.style.cursor = 'grabbing';
+});
+track.addEventListener('mouseleave', () => { isDragging = false; track.style.cursor = 'grab'; });
+track.addEventListener('mouseup',    () => { isDragging = false; track.style.cursor = 'grab'; });
+track.addEventListener('mousemove',  e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  track.scrollLeft = scrollLeft - (x - startX) * 1.2;
+});
+</script>
+</body>
+</html>
